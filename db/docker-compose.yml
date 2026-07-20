@@ -9,5 +9,7 @@ services:
     ports:
       - 1433:1433
     volumes:
-      - ./sqlserver:/var/opt/mssql
-    user: "0:0"  # Ejecuta como root temporalmente para comprobar si es un problema de permisos
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  sqlserver-data:
