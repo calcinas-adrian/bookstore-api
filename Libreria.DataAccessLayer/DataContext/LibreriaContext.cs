@@ -49,7 +49,12 @@ public partial class LibreriaContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Libreria;User Id=sa;Password=Sinclave1!;Encrypt=False;");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Libreria;User Id=sa;Password=Sinclave1!;Encrypt=False;");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
